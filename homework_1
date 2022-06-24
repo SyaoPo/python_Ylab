@@ -17,3 +17,17 @@ def domain_name(url):
 print(domain_name("http://google.com"))
 
 # task 2
+
+def int32_to_ip(int32):
+    num = "{:032b}".format(int32)
+    num_list = [num[:8], num[8:16], num[16:24], num[24:]]
+    decimal_num = []
+    for i in num_list:
+        decimal_num.append(int(i, 2))
+    res = ".".join(map(str, decimal_num))
+
+    return res
+    
+print(int32_to_ip(2154959208))
+
+# task 3
