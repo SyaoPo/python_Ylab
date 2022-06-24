@@ -1,0 +1,19 @@
+# task 1
+
+import re
+def domain_name(url):
+    res = ""
+    new_url = re.sub("[/.:]", " ", url)
+    list_utl = new_url.split()
+    url_string = "http", "www", "https"
+    for j in list_utl:
+        if j in url_string:
+            continue
+        else:
+            res += j
+            break
+    return res
+    
+print(domain_name("http://google.com"))
+
+# task 2
