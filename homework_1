@@ -14,7 +14,7 @@ def domain_name(url):
             break
     return res
     
-print(domain_name("http://google.com"))
+
 
 # task 2
 
@@ -25,9 +25,99 @@ def int32_to_ip(int32):
     for i in num_list:
         decimal_num.append(int(i, 2))
     res = ".".join(map(str, decimal_num))
-
     return res
     
-print(int32_to_ip(2154959208))
+
 
 # task 3
+
+def zeros(n):
+    x = n // 5
+    y = x
+    while x > 0:
+        x = x / 5
+        y += int(x)
+    return y
+    
+    
+ # task 4
+ 
+from itertools import combinations
+
+def bananas(s):
+    word = "banana"
+    res = set()
+    new_s = list(enumerate(s))
+
+    for x in combinations(new_s, 6):
+        k = list(s)
+        if ''.join(j[1] for j in x) == word:
+            for i, ch in enumerate(s):
+                if (i, ch) not in x:
+                    k[i] = '-'
+            res.add(''.join(k))
+    return res
+ 
+ # task 5
+ 
+# var 1
+
+import math
+def correct_multiplier(number, primes):
+    res = 0
+    for i in range(len(primes)):
+        if number % primes[i] == 0:
+            res += 1
+    if len(primes) == res:
+        return True
+
+def prime_list(num, primes):
+    my_list = []
+    while num % 2 == 0:
+        if 2 in primes:
+            my_list.append(2)
+        num = num // 2
+
+    for i in range(2, int(math.sqrt(num)) + 1):
+        while num % i == 0 and i in primes:
+            my_list.append(i)
+            num = num // i
+    if num > 2 and num in primes:
+        my_list.append(num)
+
+    return my_list
+
+
+def count_find_num(primes, limit):
+    some_num = []
+    for i in range(primes[0], limit + 1):
+        if correct_multiplier(i, primes):
+            some_num.append(i)
+    res = []
+    for j in range(len(some_num)):
+        some_list = prime_list(some_num[j], primes)
+        t = math.prod(some_list)
+        if t == some_num[j]:
+            res.append(t)
+    if res == []:
+        return []
+    return [len(res), max(res)]
+    
+    # var 2
+    
+    def count_find_num(primesL, limit):
+    res = [prod(primesL)]
+    if res[0] <= limit:
+        i = 0
+        while i < len(res):
+            for prime in primesL:
+                if res[i]*prime <= limit:
+                    res.append(res[i]*prime)
+            i += 1
+        res = set(res)
+        return [len(res), max(res)]
+    else:
+        return []
+
+    
+    
