@@ -4,7 +4,7 @@ import math
 import itertools
 
 
-def finding_short_path(address):
+def finding_short_path(address: dict):
     my_dict = dict()
     for elem in itertools.permutations(list(address.keys())[1:], len(address.keys()) - 1):
         find_el = tuple(['Почтовое отделение'] + list(elem) + ['Почтовое отделение'])
