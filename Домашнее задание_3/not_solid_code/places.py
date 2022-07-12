@@ -1,3 +1,6 @@
+from abc import ABC, abstractmethod
+
+
 class Kostroma:
     city_name = 'Kostroma'
 
